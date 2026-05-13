@@ -1,4 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { FiShoppingBag, FiUser, FiLogOut, FiHome } from 'react-icons/fi';
 import './UserNavbar.css';
@@ -6,14 +7,18 @@ import './UserNavbar.css';
 export default function UserNavbar() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const [scrolled, setScrolled] = useState(false);
 
-  const handleLogout = () => {
-    logout();
-    navigate('/');
-  };
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const handleLogout = () => { logout(); navigate('/'); };
 
   return (
-    <nav className="user-navbar">
+    <nav className={`user-navbar${scrolled ? ' scrolled' : ''}`}>
       <div className="container user-navbar-inner">
         <Link to="/" className="user-navbar-brand">
           <FiShoppingBag />
@@ -22,7 +27,7 @@ export default function UserNavbar() {
 
         <div className="user-navbar-links">
           <Link to="/" className="nav-link">
-            <FiHome size={15} /> Browse
+            <FiHome size={15} /> Home
           </Link>
         </div>
 

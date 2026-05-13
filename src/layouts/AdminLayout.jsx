@@ -2,7 +2,7 @@ import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import {
   FiGrid, FiPackage, FiUsers, FiLogOut,
-  FiShoppingBag, FiUser, FiExternalLink,
+  FiShoppingBag, FiUser,
 } from 'react-icons/fi';
 import './AdminLayout.css';
 
@@ -45,15 +45,6 @@ export default function AdminLayout() {
         </nav>
 
         <div className="admin-sidebar-footer">
-          <a
-            href="/"
-            target="_blank"
-            rel="noreferrer"
-            className="admin-nav-link"
-          >
-            <FiExternalLink />
-            <span>View Store</span>
-          </a>
           <button className="admin-nav-link logout-btn" onClick={handleLogout}>
             <FiLogOut />
             <span>Logout</span>
@@ -65,13 +56,15 @@ export default function AdminLayout() {
       <div className="admin-body">
         {/* Top bar */}
         <header className="admin-topbar">
-          <p className="admin-topbar-title">Welcome back, {user?.name}</p>
+          <div className="admin-topbar-left">
+            <p className="admin-topbar-title">Welcome back, <span>{user?.name}</span></p>
+          </div>
           <div className="admin-topbar-user">
             {user?.avatar
               ? <img src={user.avatar} alt={user.name} className="topbar-avatar" />
-              : <div className="topbar-avatar-placeholder"><FiUser size={14} /></div>
+              : <div className="topbar-avatar-placeholder">{user?.name?.[0]?.toUpperCase()}</div>
             }
-            <span>{user?.email}</span>
+            <span className="topbar-name">{user?.name}</span>
           </div>
         </header>
 

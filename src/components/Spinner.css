@@ -1,0 +1,72 @@
+/* ── Button spinner (tiny, inline) ── */
+.btn-spinner {
+  display: inline-block;
+  width: 14px; height: 14px;
+  border: 2px solid rgba(255,255,255,.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin .6s linear infinite;
+  flex-shrink: 0;
+}
+
+/* ── Section spinner (inside cards/tables) ── */
+.section-spinner {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 4rem 1rem; gap: 1rem;
+}
+
+.section-spinner-ring,
+.page-loader-ring {
+  position: relative;
+  width: 44px; height: 44px;
+}
+
+.section-spinner-ring div,
+.page-loader-ring div {
+  position: absolute; inset: 0;
+  border: 3px solid transparent;
+  border-radius: 50%;
+  animation: spin-ring 1.2s cubic-bezier(.5,0,.5,1) infinite;
+}
+.section-spinner-ring div:nth-child(1) { border-top-color: var(--primary); animation-delay: -.45s; }
+.section-spinner-ring div:nth-child(2) { border-top-color: rgba(124,58,237,.5); animation-delay: -.3s; }
+.section-spinner-ring div:nth-child(3) { border-top-color: rgba(124,58,237,.25); animation-delay: -.15s; }
+.section-spinner-ring div:nth-child(4) { border-top-color: rgba(124,58,237,.1); }
+
+.section-spinner-label {
+  font-size: .82rem; color: var(--text-3); font-weight: 500;
+}
+
+/* ── Page loader (full screen overlay) ── */
+.page-loader {
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(10,10,15,.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: fadeIn .2s ease both;
+}
+
+.page-loader-inner {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 1.25rem;
+}
+
+.page-loader-ring { width: 52px; height: 52px; }
+.page-loader-ring div:nth-child(1) { border-top-color: var(--primary); animation-delay: -.45s; }
+.page-loader-ring div:nth-child(2) { border-top-color: rgba(124,58,237,.5); animation-delay: -.3s; }
+.page-loader-ring div:nth-child(3) { border-top-color: rgba(124,58,237,.25); animation-delay: -.15s; }
+.page-loader-ring div:nth-child(4) { border-top-color: rgba(124,58,237,.1); }
+
+.page-loader-label {
+  font-size: .9rem; color: var(--text-2); font-weight: 500; letter-spacing: .02em;
+}
+
+@keyframes spin-ring {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

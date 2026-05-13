@@ -7,15 +7,17 @@ export default function Profile() {
 
   return (
     <div className="page">
-      <div className="container">
+      <div className="profile-wrapper">
         <div className="profile-card card">
-          <div className="profile-avatar-wrap">
-            {user.avatar
-              ? <img src={user.avatar} alt={user.name} className="profile-avatar" />
-              : <div className="profile-avatar-placeholder"><FiUser size={40} /></div>
-            }
+          <div className="profile-banner">
+            <div className="profile-avatar-wrap">
+              {user.avatar
+                ? <img src={user.avatar} alt={user.name} className="profile-avatar" />
+                : <div className="profile-avatar-placeholder"><FiUser size={36} /></div>
+              }
+            </div>
           </div>
-          <div className="profile-info">
+          <div className="profile-body">
             <h1 className="profile-name">{user.name}</h1>
             <div className="profile-meta">
               <span><FiMail size={14} /> {user.email}</span>

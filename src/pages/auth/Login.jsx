@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import api from '../../api/axios';
 import toast from 'react-hot-toast';
-import { FiShoppingBag } from 'react-icons/fi';
+import { FiShoppingBag, FiLogIn } from 'react-icons/fi';
+import { BtnSpinner } from '../../components/Spinner';
 import './Auth.css';
 
 export default function Login() {
@@ -39,16 +40,16 @@ export default function Login() {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Email</label>
-            <input type="email" placeholder="you@example.com" required
+            <input type="email" placeholder="you@example.com" required disabled={loading}
               value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
           </div>
           <div className="form-group">
             <label>Password</label>
-            <input type="password" placeholder="••••••••" required
+            <input type="password" placeholder="••••••••" required disabled={loading}
               value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
           </div>
           <button type="submit" className="btn btn-primary" style={{ width: '100%' }} disabled={loading}>
-            {loading ? 'Signing in...' : 'Sign In'}
+            {loading ? <><BtnSpinner /> Signing in...</> : <><FiLogIn size={15} /> Sign In</>}
           </button>
         </form>
         <p className="auth-footer">

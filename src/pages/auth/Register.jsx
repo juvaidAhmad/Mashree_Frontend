@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import api from '../../api/axios';
 import toast from 'react-hot-toast';
-import { FiShoppingBag } from 'react-icons/fi';
+import { FiShoppingBag, FiUserPlus } from 'react-icons/fi';
+import { BtnSpinner } from '../../components/Spinner';
 import './Auth.css';
 
 export default function Register() {
@@ -43,25 +44,25 @@ export default function Register() {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Name</label>
-            <input type="text" placeholder="Your name" required
+            <input type="text" placeholder="Your name" required disabled={loading}
               value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
           </div>
           <div className="form-group">
             <label>Email</label>
-            <input type="email" placeholder="you@example.com" required
+            <input type="email" placeholder="you@example.com" required disabled={loading}
               value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
           </div>
           <div className="form-group">
             <label>Password</label>
-            <input type="password" placeholder="Min 6 characters" required minLength={6}
+            <input type="password" placeholder="Min 6 characters" required minLength={6} disabled={loading}
               value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
           </div>
           <div className="form-group">
             <label>Profile Image (optional)</label>
-            <input type="file" accept="image/*" onChange={(e) => setAvatar(e.target.files[0])} />
+            <input type="file" accept="image/*" disabled={loading} onChange={(e) => setAvatar(e.target.files[0])} />
           </div>
           <button type="submit" className="btn btn-primary" style={{ width: '100%' }} disabled={loading}>
-            {loading ? 'Creating account...' : 'Create Account'}
+            {loading ? <><BtnSpinner /> Creating account...</> : <><FiUserPlus size={15} /> Create Account</>}
           </button>
         </form>
         <p className="auth-footer">

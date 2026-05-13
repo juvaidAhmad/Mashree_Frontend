@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import api from '../../api/axios';
 import toast from 'react-hot-toast';
-import { FiShield, FiEye, FiEyeOff } from 'react-icons/fi';
+import { FiShield, FiEye, FiEyeOff, FiUserPlus } from 'react-icons/fi';
+import { BtnSpinner } from '../../components/Spinner';
 import './Auth.css';
 import './AdminAuth.css';
 
@@ -40,36 +41,31 @@ export default function AdminRegister() {
     <div className="auth-page admin-auth-page">
       <div className="auth-card card">
         <div className="auth-header">
-          <div className="admin-auth-icon">
-            <FiShield size={28} />
-          </div>
+          <div className="admin-auth-icon"><FiShield size={28} /></div>
           <h1>Admin Registration</h1>
           <p>You need a valid invite code to register as admin</p>
         </div>
-
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Full Name</label>
-            <input type="text" placeholder="Admin name" required value={form.name} onChange={set('name')} />
+            <input type="text" placeholder="Admin name" required disabled={loading}
+              value={form.name} onChange={set('name')} />
           </div>
           <div className="form-group">
             <label>Email</label>
-            <input type="email" placeholder="admin@example.com" required value={form.email} onChange={set('email')} />
+            <input type="email" placeholder="admin@example.com" required disabled={loading}
+              value={form.email} onChange={set('email')} />
           </div>
           <div className="form-group">
             <label>Password</label>
-            <input type="password" placeholder="Min 6 characters" required minLength={6} value={form.password} onChange={set('password')} />
+            <input type="password" placeholder="Min 6 characters" required minLength={6} disabled={loading}
+              value={form.password} onChange={set('password')} />
           </div>
           <div className="form-group">
             <label>Admin Invite Code</label>
             <div className="input-with-icon">
-              <input
-                type={showCode ? 'text' : 'password'}
-                placeholder="Enter invite code"
-                required
-                value={form.inviteCode}
-                onChange={set('inviteCode')}
-              />
+              <input type={showCode ? 'text' : 'password'} placeholder="Enter invite code"
+                required disabled={loading} value={form.inviteCode} onChange={set('inviteCode')} />
               <button type="button" className="input-icon-btn" onClick={() => setShowCode((v) => !v)}>
                 {showCode ? <FiEyeOff size={16} /> : <FiEye size={16} />}
               </button>
@@ -77,13 +73,13 @@ export default function AdminRegister() {
           </div>
           <div className="form-group">
             <label>Profile Image (optional)</label>
-            <input type="file" accept="image/*" onChange={(e) => setAvatar(e.target.files[0])} />
+            <input type="file" accept="image/*" disabled={loading}
+              onChange={(e) => setAvatar(e.target.files[0])} />
           </div>
-          <button type="submit" className="btn btn-admin" style={{ width: '100%' }} disabled={loading}>
-            {loading ? 'Creating admin account...' : 'Create Admin Account'}
+          <button type="submit" className="btn btn-admin" disabled={loading}>
+            {loading ? <><BtnSpinner /> Creating account...</> : <><FiUserPlus size={15} /> Create Admin Account</>}
           </button>
         </form>
-
         <p className="auth-footer">
           Already have an account? <Link to="/admin/login">Admin Login</Link>
         </p>

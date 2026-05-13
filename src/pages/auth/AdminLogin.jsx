@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import api from '../../api/axios';
 import toast from 'react-hot-toast';
-import { FiShield } from 'react-icons/fi';
+import { FiShield, FiLogIn } from 'react-icons/fi';
+import { BtnSpinner } from '../../components/Spinner';
 import './Auth.css';
 import './AdminAuth.css';
 
@@ -35,27 +36,25 @@ export default function AdminLogin() {
     <div className="auth-page admin-auth-page">
       <div className="auth-card card">
         <div className="auth-header">
-          <div className="admin-auth-icon">
-            <FiShield size={28} />
-          </div>
+          <div className="admin-auth-icon"><FiShield size={28} /></div>
           <h1>Admin Login</h1>
           <p>Sign in to access the admin panel</p>
         </div>
-
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Email</label>
-            <input type="email" placeholder="admin@example.com" required value={form.email} onChange={set('email')} />
+            <input type="email" placeholder="admin@example.com" required disabled={loading}
+              value={form.email} onChange={set('email')} />
           </div>
           <div className="form-group">
             <label>Password</label>
-            <input type="password" placeholder="••••••••" required value={form.password} onChange={set('password')} />
+            <input type="password" placeholder="••••••••" required disabled={loading}
+              value={form.password} onChange={set('password')} />
           </div>
-          <button type="submit" className="btn btn-admin" style={{ width: '100%' }} disabled={loading}>
-            {loading ? 'Signing in...' : 'Sign In as Admin'}
+          <button type="submit" className="btn btn-admin" disabled={loading}>
+            {loading ? <><BtnSpinner /> Signing in...</> : <><FiLogIn size={15} /> Sign In as Admin</>}
           </button>
         </form>
-
         <p className="auth-footer">
           No admin account? <Link to="/admin/register">Register with invite code</Link>
         </p>
