@@ -1,0 +1,62 @@
+.home-hero {
+  text-align: center; padding: 3rem 1rem 2rem;
+}
+.home-hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: .5rem; }
+.home-hero p { color: var(--text-muted); margin-bottom: 1.5rem; }
+
+.search-bar {
+  display: flex; align-items: center; gap: .5rem;
+  max-width: 560px; margin: 0 auto;
+  background: #fff; border: 1.5px solid var(--border);
+  border-radius: 999px; padding: .4rem .4rem .4rem 1rem;
+  box-shadow: var(--shadow);
+}
+.search-bar input {
+  flex: 1; border: none; outline: none; font-size: .95rem; background: transparent;
+}
+.search-bar .btn { border-radius: 999px; }
+.search-icon { color: var(--text-muted); flex-shrink: 0; }
+
+.home-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.filters-panel { padding: 1.25rem; }
+.filters-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.filters-header h3 { font-size: 1rem; font-weight: 700; }
+.btn-clear {
+  display: flex; align-items: center; gap: .25rem;
+  background: none; border: none; color: var(--danger);
+  font-size: .8rem; cursor: pointer; font-weight: 600;
+}
+.filter-section { margin-bottom: 1.25rem; }
+.filter-section label {
+  display: block; font-size: .8rem; font-weight: 600;
+  color: var(--text-muted); margin-bottom: .4rem; text-transform: uppercase; letter-spacing: .05em;
+}
+.filter-section select {
+  width: 100%; padding: .55rem .75rem; border: 1.5px solid var(--border);
+  border-radius: 8px; font-size: .875rem; background: var(--surface); outline: none;
+}
+.price-inputs {
+  display: flex; align-items: center; gap: .5rem;
+}
+.price-inputs input {
+  flex: 1; padding: .55rem .75rem; border: 1.5px solid var(--border);
+  border-radius: 8px; font-size: .875rem; outline: none; width: 0;
+}
+.price-inputs span { color: var(--text-muted); }
+
+.results-info { font-size: .875rem; color: var(--text-muted); margin-bottom: 1rem; }
+
+@media (max-width: 768px) {
+  .home-layout { grid-template-columns: 1fr; }
+  .filters-panel { order: -1; }
+  .home-hero h1 { font-size: 1.6rem; }
+}

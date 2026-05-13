@@ -1,0 +1,17 @@
+.product-form-card { padding: 2rem; }
+.product-form { display: flex; flex-direction: column; gap: .25rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.upload-area {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: .5rem; padding: 2rem; border: 2px dashed var(--border);
+  border-radius: 10px; cursor: pointer; color: var(--text-muted);
+  transition: border-color .2s;
+}
+.upload-area:hover { border-color: var(--primary); color: var(--primary); }
+.image-previews { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .5rem; }
+.preview-img { width: 80px; height: 60px; object-fit: cover; border-radius: 6px; }
+.form-actions { display: flex; justify-content: flex-end; gap: .75rem; margin-top: .5rem; }
+
+@media (max-width: 640px) {
+  .form-row { grid-template-columns: 1fr; }
+}

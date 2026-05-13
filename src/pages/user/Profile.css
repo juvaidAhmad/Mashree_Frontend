@@ -1,0 +1,49 @@
+.profile-card {
+  max-width: 520px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary);
+}
+
+.profile-avatar-placeholder {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #ede9fe;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-name { font-size: 1.6rem; font-weight: 700; }
+
+.profile-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  flex-wrap: wrap;
+  color: var(--text-muted);
+  font-size: .875rem;
+  margin-top: .35rem;
+}
+
+.profile-meta span { display: flex; align-items: center; gap: .3rem; }
+
+.profile-joined {
+  font-size: .82rem;
+  color: var(--text-muted);
+}
