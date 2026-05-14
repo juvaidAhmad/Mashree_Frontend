@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import api from '../../api/axios';
 import ProductCard from '../../components/ProductCard';
-import Spinner from '../../components/Spinner';
+import { SkeletonGrid } from '../../components/SkeletonCard';
 import { FiSearch, FiX, FiShield, FiZap, FiStar } from 'react-icons/fi';
 import './Home.css';
 
@@ -220,7 +220,7 @@ export default function Home() {
             )}
           </div>
 
-          {loading ? <Spinner /> : error ? (
+          {loading ? <SkeletonGrid count={12} /> : error ? (
             <div className="empty-state">
               <p style={{ color: 'var(--danger)' }}>{error}</p>
               <button className="btn btn-primary" style={{ marginTop: '1rem' }} onClick={fetchProducts}>Retry</button>

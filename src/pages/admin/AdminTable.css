@@ -72,3 +72,8 @@
   .user-email-mobile { display: block; }
   .td-location { display: none; }
 }
+
+/* ── Light mode ── */
+[data-theme="light"] .admin-table th { background: var(--bg-2); }
+[data-theme="light"] .td-price { color: var(--primary); }
+[data-theme="light"] .table-search-input { background: #fff; }

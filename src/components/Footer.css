@@ -92,3 +92,9 @@
   .footer-bottom { flex-direction: column; align-items: flex-start; }
   .footer-bottom-links { gap: 1rem; }
 }
+
+/* ── Light mode ── */
+[data-theme="light"] .footer { background: var(--bg-2); }
+[data-theme="light"] .social-btn { background: rgba(255,255,255,.8); }
+[data-theme="light"] .footer-link:hover { color: var(--primary); }
+[data-theme="light"] .footer-bottom-link:hover { color: var(--primary); }

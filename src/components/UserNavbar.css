@@ -57,3 +57,22 @@
 }
 .user-chip-name { font-size: .82rem; font-weight: 600; color: var(--text); display: none; }
 @media (min-width: 480px) { .user-chip-name { display: block; } }
+
+/* ── Theme toggle ── */
+.theme-toggle {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--border-2);
+  background: var(--surface); color: var(--text-2);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: var(--transition); flex-shrink: 0;
+}
+.theme-toggle:hover { border-color: var(--primary); color: var(--text); background: var(--surface-2); transform: rotate(20deg); }
+
+/* ── Light mode navbar ── */
+[data-theme="light"] .user-navbar {
+  background: rgba(248,250,252,.85);
+}
+[data-theme="light"] .user-navbar.scrolled {
+  background: rgba(248,250,252,.97);
+  box-shadow: 0 4px 24px rgba(0,0,0,.08);
+}

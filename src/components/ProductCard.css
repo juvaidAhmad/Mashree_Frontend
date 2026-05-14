@@ -58,3 +58,7 @@
   font-size: .78rem; color: var(--text-3);
   display: flex; align-items: center; gap: .25rem;
 }
+
+/* ── Light mode ── */
+[data-theme="light"] .product-card { background: rgba(255,255,255,.9); box-shadow: var(--shadow-sm); }
+[data-theme="light"] .product-card:hover { box-shadow: var(--shadow-lg), 0 0 30px rgba(124,58,237,.1); }

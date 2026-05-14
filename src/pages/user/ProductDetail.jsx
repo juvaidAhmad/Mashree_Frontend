@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../../api/axios';
-import Spinner from '../../components/Spinner';
-import { FiMapPin, FiUser, FiArrowLeft, FiTag } from 'react-icons/fi';
+import { SkeletonProductDetail } from '../../components/SkeletonCard';
+import { FiMapPin, FiUser, FiArrowLeft, FiTag, FiShoppingCart, FiX } from 'react-icons/fi';
 import './ProductDetail.css';
 
 export default function ProductDetail() {
@@ -12,6 +12,7 @@ export default function ProductDetail() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [activeImg, setActiveImg] = useState(0);
+  const [showMaintenance, setShowMaintenance] = useState(false);
 
   useEffect(() => {
     api.get(`/products/${id}`)
@@ -20,7 +21,13 @@ export default function ProductDetail() {
       .finally(() => setLoading(false));
   }, [id]);
 
-  if (loading) return <Spinner />;
+  if (loading) return (
+    <div className="page">
+      <div className="container">
+        <SkeletonProductDetail />
+      </div>
+    </div>
+  );
   if (error) return (
     <div className="page container">
       <div className="empty-state">
@@ -70,9 +77,31 @@ export default function ProductDetail() {
               <h3>Description</h3>
               <p>{product.description}</p>
             </div>
+            <button className="btn btn-primary btn-buy" onClick={() => setShowMaintenance(true)}>
+              <FiShoppingCart size={17} /> Buy Now
+            </button>
           </div>
         </div>
       </div>
+
+      {/* ── Maintenance modal ── */}
+      {showMaintenance && (
+        <div className="maintenance-overlay" onClick={() => setShowMaintenance(false)}>
+          <div className="maintenance-modal card" onClick={(e) => e.stopPropagation()}>
+            <button className="maintenance-close" onClick={() => setShowMaintenance(false)}>
+              <FiX size={18} />
+            </button>
+            <div className="maintenance-icon">🚧</div>
+            <h2 className="maintenance-title">Under Maintenance</h2>
+            <p className="maintenance-msg">
+              Our checkout system is currently being upgraded. Check back soon!
+            </p>
+            <button className="btn btn-outline" onClick={() => setShowMaintenance(false)}>
+              Got it
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

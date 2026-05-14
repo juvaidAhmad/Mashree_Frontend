@@ -68,3 +68,51 @@
   .product-detail-title { font-size: 1.4rem; }
   .product-detail-price { font-size: 1.8rem; }
 }
+
+/* ── Buy button ── */
+.btn-buy {
+  width: 100%; padding: .85rem; font-size: 1rem;
+  border-radius: var(--radius); margin-top: .5rem;
+  box-shadow: 0 6px 28px rgba(124,58,237,.4);
+}
+.btn-buy:hover { box-shadow: 0 8px 36px rgba(124,58,237,.55); transform: translateY(-2px); }
+
+/* ── Maintenance modal ── */
+.maintenance-overlay {
+  position: fixed; inset: 0; z-index: 999;
+  background: rgba(0,0,0,.6);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem;
+  animation: fadeIn .2s ease both;
+}
+
+.maintenance-modal {
+  position: relative;
+  max-width: 400px; width: 100%;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  animation: scaleIn .25s cubic-bezier(.4,0,.2,1) both;
+  border: 1px solid var(--border-2);
+}
+
+.maintenance-close {
+  position: absolute; top: 1rem; right: 1rem;
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 50%; width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--text-2); transition: var(--transition);
+}
+.maintenance-close:hover { background: var(--surface-3); color: var(--text); }
+
+.maintenance-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+.maintenance-title {
+  font-size: 1.35rem; font-weight: 800; letter-spacing: -.02em;
+  color: var(--text); margin-bottom: .6rem;
+}
+
+.maintenance-msg {
+  font-size: .9rem; color: var(--text-2); line-height: 1.7;
+  margin-bottom: 1.75rem;
+}

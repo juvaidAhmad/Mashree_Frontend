@@ -170,3 +170,53 @@
 @media (max-width: 900px) {
   .recent-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ── Charts ── */
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.25rem;
+  animation: fadeUp .4s .1s ease both;
+}
+
+.chart-card {
+  padding: 1.75rem;
+  border-radius: var(--radius);
+}
+
+.chart-card-header {
+  display: flex; align-items: center; gap: .55rem;
+  margin-bottom: 1.5rem;
+  font-size: .95rem; font-weight: 700; color: var(--text);
+}
+.chart-card-header svg { color: #a78bfa; }
+
+/* Recharts tooltip */
+.chart-tooltip {
+  background: var(--bg-2);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-sm);
+  padding: .6rem .9rem;
+  box-shadow: var(--shadow);
+}
+.chart-tooltip-label {
+  font-size: .78rem; font-weight: 700; color: var(--text-2);
+  text-transform: uppercase; letter-spacing: .05em; margin-bottom: .2rem;
+}
+.chart-tooltip-value {
+  font-size: 1.1rem; font-weight: 800;
+  background: var(--grad-text);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+@media (max-width: 700px) {
+  .charts-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Light mode ── */
+[data-theme="light"] .stat-card { background: rgba(255,255,255,.9); box-shadow: var(--shadow-sm); }
+[data-theme="light"] .recent-section { background: rgba(255,255,255,.9); }
+[data-theme="light"] .recent-card { background: var(--bg-2); }
+[data-theme="light"] .chart-card { background: rgba(255,255,255,.9); }
+[data-theme="light"] .chart-tooltip { background: #fff; }
+[data-theme="light"] .stat-footer { background: var(--bg-2); }
